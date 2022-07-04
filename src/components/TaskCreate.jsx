@@ -12,7 +12,6 @@ const TaskCreate = ({ handleCreateNewTask, taskExist }) => {
   const handleOnSubmit = event => {
     event.preventDefault();
     handleCreateNewTask(newTaskName);
-    localStorage.setItem('tasks', newTaskName);
     setNewTaskName('');
   }
 

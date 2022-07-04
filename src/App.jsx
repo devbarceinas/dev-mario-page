@@ -1,13 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TaskCreate } from "./components/TaskCreate";
 
 const App = () => {
   const [taskExist, setTaskExist] = useState("");
-  const [tasksItems, setTasksItems] = useState([
-    { name: "Mi primer tarea", done: false },
-    { name: "Mi segunda tarea", done: true },
-    { name: "Mi tercer tarea", done: false },
-  ]);
+  const [tasksItems, setTasksItems] = useState([]);
 
   const handleCreateNewTask = (newTask) => {
     if (!tasksItems.find((task) => task.name === newTask)) {
@@ -17,6 +13,17 @@ const App = () => {
       setTaskExist("Esa tarea ya existe.");
     }
   };
+
+  useEffect(() => {
+    let tasks = localStorage.getItem('tasks');
+    if (tasks) {
+      setTasksItems(JSON.parse(tasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasksItems));
+  }, [tasksItems]);
 
   return (
     <>
