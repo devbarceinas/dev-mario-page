@@ -1,6 +1,6 @@
 import { TaskRow } from "./TaskRow";
 
-const TaskTable = ({ tasks }) => {
+const TaskTable = ({ tasks, handleToggleTask }) => {
   return (
     <table>
       <thead>
@@ -10,7 +10,7 @@ const TaskTable = ({ tasks }) => {
       </thead>
       <tbody>
         {tasks.map((task) => (
-          <TaskRow key={task.name} task={task} />
+          <TaskRow key={task.name} task={task} handleToggleTask={handleToggleTask} />
         ))}
       </tbody>
     </table>

@@ -8,6 +8,7 @@ const App = () => {
     taskExist,
     tasksItems,
     handleCreateNewTask,
+    handleToggleTask,
     setTaskExist,
   } = useTasks();
 
@@ -19,7 +20,8 @@ const App = () => {
         taskExist={taskExist}
       />
       <TaskTable 
-        tasks={tasksItems} 
+        tasks={tasksItems}
+        handleToggleTask={handleToggleTask}
       />
     </>
   );

@@ -11,8 +11,11 @@ const TaskCreate = ({ handleCreateNewTask, taskExist }) => {
 
   const handleOnSubmit = event => {
     event.preventDefault();
-    handleCreateNewTask(newTaskName);
-    setNewTaskName('');
+    if (newTaskName !== '') {
+      handleCreateNewTask(newTaskName);
+      setNewTaskName('');
+      return;
+    }
   }
 
   return (
