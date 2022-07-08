@@ -1,17 +1,18 @@
-import { useState } from "react";
 import { ShowTasksDone } from "./components/ShowTasksDone";
 import { TaskCreate } from "./components/TaskCreate";
 import { TaskTable } from "./components/TaskTable";
 import { useTasks } from "./hooks/useTasks";
 
 const App = () => {
-  const [showCompleted, setShowCompleted] = useState(false);
   const {
     taskExist,
     tasksItems,
+    showCompleted,
     handleCreateNewTask,
     handleToggleTask,
+    handleCleanTasks,
     setTaskExist,
+    setShowCompleted,
   } = useTasks();
 
   return (
@@ -25,6 +26,7 @@ const App = () => {
       <ShowTasksDone
         description="Completed Tasks"
         isChecked={showCompleted}
+        handleCleanTasks={handleCleanTasks}
         callback={(checked) => setShowCompleted(checked)}
       />
       {showCompleted && (

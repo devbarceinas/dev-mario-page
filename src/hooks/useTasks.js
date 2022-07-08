@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const useTasks = () => {
   const [taskExist, setTaskExist] = useState("");
   const [tasksItems, setTasksItems] = useState([]);
+  const [showCompleted, setShowCompleted] = useState(false);
 
   useEffect(() => {
     let tasks = localStorage.getItem("tasks");
@@ -36,19 +37,20 @@ const useTasks = () => {
     );
   };
 
-  const handleClean = () => {
-    const test = tasksItems.filter(task => !task.done);
-    console.log(test)
-  }
-
-  handleClean();
+  const handleCleanTasks = () => {
+    setTasksItems(tasksItems.filter((task) => !task.done));
+    setShowCompleted(false);
+  };
 
   return {
     taskExist,
     tasksItems,
+    showCompleted,
     handleCreateNewTask,
     handleToggleTask,
+    handleCleanTasks,
     setTaskExist,
+    setShowCompleted,
   };
 };
 
