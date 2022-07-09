@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TaskCreate = ({ handleCreateNewTask, taskExist }) => {
+const TaskCreate = ({ handleCreateNewTask }) => {
 
   const [newTaskName, setNewTaskName] = useState('');
 
@@ -19,18 +19,26 @@ const TaskCreate = ({ handleCreateNewTask, taskExist }) => {
   }
 
   return (
-    <>
-      <h3>{taskExist}</h3>
-      <form onSubmit={handleOnSubmit}>
-        <input 
-          type="text" 
-          placeholder="Enter task" 
-          value={newTaskName}
-          onChange={handleChange} 
-        />
-        <button type="submit">Add task</button>
+    <section>
+      <form onSubmit={handleOnSubmit} className="mt-5 mb-2 row">
+        <div className="col-9">
+          <input 
+            type="text" 
+            placeholder="Enter task" 
+            value={newTaskName}
+            onChange={handleChange}
+            className="form-control"
+          />
+        </div>
+        <div className="col-3">
+          <button 
+            type="submit"
+            className="btn btn-primary block">
+              Add a new task
+          </button>
+        </div>
       </form>
-    </>
+    </section>
   );
 };
 

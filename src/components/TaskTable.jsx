@@ -1,6 +1,6 @@
 import { TaskRow } from "./TaskRow";
 
-const TaskTable = ({ tasks, handleToggleTask, showCompleted = false}) => {
+const TaskTable = ({ title, tasks, handleToggleTask, showCompleted = false}) => {
 
   const handleTaskRow = (isDone) => {
     return (
@@ -13,16 +13,12 @@ const TaskTable = ({ tasks, handleToggleTask, showCompleted = false}) => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Task`s</th>
-        </tr>
-      </thead>
-      <tbody>
+    <section>
+      {!showCompleted &&  <h3>{title}</h3>}
+      <ul className="list-group list-group-numered mt-4">
         {handleTaskRow(showCompleted)}
-      </tbody>
-    </table>
+      </ul>
+    </section>
   );
 };
 
